@@ -1,0 +1,66 @@
+<!-- Assignment Oparators -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        #num_1,
+        #num_2,
+        #num_3,
+        #num_4 {
+            width: 300px;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        .ans {
+            color: #00000055;
+        }
+    </style>
+</head>
+<div class="container">
+    <h1>* Arithmetic Oparators</h1>
+    <form action="Project 1.html" class="mt-5"></form>
+    <label for="number_1" class="form-label">Enter Number</label>
+    <input type="number" class="form-control" id="num_1">
+    <h4 class="mt-2 ans" id="ans">Answer seen here when clicked button.</h4>
+    <button onclick="increment()" class="btn btn-primary mt-3">
+        Incriment
+    </button>
+    <button onclick="increment_90()" class="btn btn-primary mt-3">
+        Incriment 90
+    </button>
+    <button onclick="subtract()" class="btn btn-primary mt-3">
+        Subtract 5
+    </button>
+</div>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function increment() {
+        let num1 = document.getElementById("num_1").value
+        num1++
+        document.getElementById("ans").innerHTML = "number is " + num1
+    }
+    function increment_90() {
+        let num1 = document.getElementById("num_1").value
+        let num2 = +num1
+        num2 += 90
+        document.getElementById("ans").innerHTML = "number is " + num2
+    }
+    function subtract() {
+        let num1 = document.getElementById("num_1").value
+        num1 -= 5
+        document.getElementById("ans").innerHTML = "number is " + num1
+    }
+</script>
