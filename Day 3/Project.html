@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .percentage,
+        .interest,
+        .swap,
+        .averageofmarks,
+        .gst {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .active {
+            color: white;
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <div class="row mt-5 home">
+            <h1 class="col-12 mb-3 text-secondary">What will you calculate ? please select.</h1>
+            <button onclick="percentagescreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary btn1">
+                Percentage
+            </button>
+            <button onclick="interestscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn2">
+                Interest
+            </button>
+            <button onclick="swapscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn3">
+                Swap
+            </button>
+            <button onclick="averagescreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn4">
+                Average of marks
+            </button>
+            <button onclick="gstscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn5">
+                GST
+            </button>
+        </div>
+        <div class="row percentage">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Result *</h1>
+
+                <h4>* Gujarati</h4>
+                <input type="text" id="input1" class="form-control mb-4">
+                <h4>* Mathematics</h4>
+                <input type="text" id="input2" class="form-control mb-4">
+                <h4>* English</h4>
+                <input type="text" id="input3" class="form-control mb-4">
+                <h4>* Science</h4>
+                <input type="text" id="input4" class="form-control mb-4">
+                <h4>* Computer</h4>
+                <input type="text" id="input5" class="form-control mb-4">
+                <h5 id="ans1" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="result()">
+                    Calculate
+                </button>
+            </div>
+        </div>
+        <div class="row interest">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Find Simple Interest. *</h1>
+
+                <h4>* Principal</h4>
+                <input type="text" id="input6" class="form-control mb-4">
+                <h4>* Rate</h4>
+                <input type="text" id="input7" class="form-control mb-4">
+                <h4>* Number of duration in year</h4>
+                <input type="text" id="input8" class="form-control mb-4">
+                <h5 id="ans2" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="interest()">
+                    Calculate
+                </button>
+            </div>
+        </div>
+        <div class="row swap">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Swap *</h1>
+                <h4>* Number 1</h4>
+                <input type="text" id="input9" class="form-control mb-4">
+                <h4>* Number 2</h4>
+                <input type="text" id="input10" class="form-control mb-4">
+                <h4>* Number 3</h4>
+                <input type="text" id="input11" class="form-control mb-4">
+                <h5 id="ans3" class="text-secondary mt-3">Answer is here when click swap button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="swap()">
+                    Swap
+                </button>
+            </div>
+        </div>
+        <div class="row averageofmarks">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Average of marks *</h1>
+
+                <h4>* Gujarati</h4>
+                <input type="text" id="input12" class="form-control mb-4">
+                <h4>* Mathematics</h4>
+                <input type="text" id="input13" class="form-control mb-4">
+                <h4>* English</h4>
+                <input type="text" id="input14" class="form-control mb-4">
+                <h4>* Science</h4>
+                <input type="text" id="input15" class="form-control mb-4">
+                <h4>* Computer</h4>
+                <input type="text" id="input16" class="form-control mb-4">
+                <h5 id="ans4" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="average()">
+                    Calculate
+                </button>
+            </div>
+        </div>
+        <div class="row gst">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* GST *</h1>
+
+                <h4>* Price</h4>
+                <input type="text" id="input17" class="form-control mb-4">
+                <h4>* Tax in percentage</h4>
+                <input type="text" id="input18" class="form-control mb-4">
+                <h5 id="ans5" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="gst()">
+                    Calculate
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function hide() {
+        document.querySelector('.percentage').classList.remove("show");
+        document.querySelector('.interest').classList.remove("show");
+        document.querySelector('.swap').classList.remove("show");
+        document.querySelector('.averageofmarks').classList.remove("show");
+        document.querySelector('.gst').classList.remove("show");
+        document.querySelector('.btn1').classList.remove("active");
+        document.querySelector('.btn2').classList.remove("active");
+        document.querySelector('.btn3').classList.remove("active");
+        document.querySelector('.btn4').classList.remove("active");
+        document.querySelector('.btn5').classList.remove("active");
+    }
+    function percentagescreen() {
+        hide()
+        document.querySelector('.percentage').classList.add("show");
+        document.querySelector('.btn1').classList.add("active");
+    }
+    function interestscreen() {
+        hide()
+        document.querySelector('.interest').classList.add("show");
+        document.querySelector('.btn2').classList.add("active");
+    }
+    function swapscreen() {
+        hide()
+        document.querySelector('.swap').classList.add("show");
+        document.querySelector('.btn3').classList.add("active");
+    }
+    function averagescreen() {
+        hide()
+        document.querySelector('.averageofmarks').classList.add("show");
+        document.querySelector('.btn4').classList.add("active");
+    }
+    function gstscreen() {
+        hide()
+        document.querySelector('.gst').classList.add("show");
+        document.querySelector('.btn5').classList.add("active");
+    }
+    function result() {
+        var a = document.getElementById("input1").value
+        var b = document.getElementById("input2").value
+        var c = document.getElementById("input3").value
+        var d = document.getElementById("input4").value
+        var e = document.getElementById("input5").value
+        var f = (+a + +b + +c + +d + +e) * 100 / 500
+        document.getElementById("ans1").innerHTML = f
+    }
+    function interest() {
+        var a = document.getElementById("input6").value
+        var b = document.getElementById("input7").value
+        var c = document.getElementById("input8").value
+        var d = (+a * +b * +c) / 100
+        document.getElementById("ans2").innerHTML = d
+    }
+    function swap() {
+        var a = document.getElementById("input9").value
+        var b = document.getElementById("input10").value
+        var c = document.getElementById("input11").value
+        document.getElementById("ans3").innerHTML = "Number 1 :"+ c+ " Number 2 :"+a+ " Number 3 : "+ b
+    }
+    function average() {
+        var a = document.getElementById("input12").value
+        var b = document.getElementById("input13").value
+        var c = document.getElementById("input14").value
+        var d = document.getElementById("input15").value
+        var e = document.getElementById("input16").value
+        var f = (+a + +b + +c + +d + +e) / 5
+        document.getElementById("ans4").innerHTML = f
+    }
+    function gst() {
+        var a = document.getElementById("input17").value
+        var b = document.getElementById("input18").value
+        var c = (+a * +b) / 100
+        document.getElementById("ans5").innerHTML = c + +a
+    }
+</script>
