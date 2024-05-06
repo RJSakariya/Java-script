@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .percentage,
-        .interest,
+        .bill,
         .swap,
         .averageofmarks,
         .gst {
@@ -38,8 +38,8 @@
             <button onclick="percentagescreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary btn1">
                 Percentage
             </button>
-            <button onclick="interestscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn2">
-                Interest
+            <button onclick="billscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn2">
+                bill
             </button>
             <button onclick="swapscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn3">
                 Swap
@@ -71,9 +71,9 @@
                 </button>
             </div>
         </div>
-        <div class="row interest">
+        <div class="row bill">
             <div class="col-12 col-md-6">
-                <h1 class="my-5">* Find Simple Interest. *</h1>
+                <h1 class="my-5">* Find Simple bill. *</h1>
 
                 <h4>* Principal</h4>
                 <input type="text" id="input6" class="form-control mb-4">
@@ -82,7 +82,7 @@
                 <h4>* Number of duration in year</h4>
                 <input type="text" id="input8" class="form-control mb-4">
                 <h5 id="ans2" class="text-secondary mt-3">Answer is here when click calculate button</h5>
-                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="interest()">
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="bill()">
                     Calculate
                 </button>
             </div>
@@ -143,7 +143,7 @@
 <script>
     function hide() {
         document.querySelector('.percentage').classList.remove("show");
-        document.querySelector('.interest').classList.remove("show");
+        document.querySelector('.bill').classList.remove("show");
         document.querySelector('.swap').classList.remove("show");
         document.querySelector('.averageofmarks').classList.remove("show");
         document.querySelector('.gst').classList.remove("show");
@@ -158,9 +158,9 @@
         document.querySelector('.percentage').classList.add("show");
         document.querySelector('.btn1').classList.add("active");
     }
-    function interestscreen() {
+    function billscreen() {
         hide()
-        document.querySelector('.interest').classList.add("show");
+        document.querySelector('.bill').classList.add("show");
         document.querySelector('.btn2').classList.add("active");
     }
     function swapscreen() {
@@ -187,7 +187,7 @@
         var f = (+a + +b + +c + +d + +e) * 100 / 500
         document.getElementById("ans1").innerHTML = f
     }
-    function interest() {
+    function bill() {
         var a = document.getElementById("input6").value
         var b = document.getElementById("input7").value
         var c = document.getElementById("input8").value
