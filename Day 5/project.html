@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .electricity,
+        .smallest,
+        .largest,
+        .positive_nagetive,
+        .grading,
+        .tax,
+        .swap
+        {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .active {
+            color: white;
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <div class="row mt-5 home">
+            <h1 class="col-12 mb-3 text-secondary">Comparison</h1>
+            <button onclick="electricityscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary btn1">
+                Eletricity Bill
+            </button>
+            <button onclick="smallestscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn2">
+                Smallest Number
+            </button>
+            <button onclick="largestscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn3">
+                Largest Number
+            </button>
+            <button onclick="positive_nagetivescreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn4">
+                Positive / Nagetive 
+            </button>
+            <button onclick="gradingscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 btn5">
+                Grading
+            </button>
+            <button class="border-0 bg-white col-6 col-md-3 col-lg-3 mt-3"></button>
+            <button onclick="taxscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 mt-3 btn6">
+                Tax
+            </button>
+            <button onclick="swapscreen()" class="btn col-6 col-md-3 col-lg-2 btn-outline-secondary ms-3 mt-3 btn7">
+                Swap
+            </button>
+        </div>
+        <div class="row electricity">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Electricity Bill *</h1>
+                <input type="text" id="input1" class="form-control mb-4">
+                <h5 id="ans1" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="electricity()">
+                    Generate
+                </button>
+            </div>
+        </div>
+        <div class="row smallest">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Smallest *</h1>
+                <h4>* Number 1</h4>
+                <input type="text" id="input2" class="form-control mb-4">
+                <h4>* Number 2</h4>
+                <input type="text" id="input3" class="form-control mb-4">
+                <h4>* Number 3</h4>
+                <input type="text" id="input4" class="form-control mb-4">
+                <h4>* Number 4</h4>
+                <input type="text" id="input5" class="form-control mb-4">
+                <h5 id="ans2" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="smallest()">
+                    Get
+                </button>
+            </div>
+        </div>
+        <div class="row largest">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Largest *</h1>
+                <h4>* Number 1</h4>
+                <input type="text" id="input6" class="form-control mb-4">
+                <h4>* Number 2</h4>
+                <input type="text" id="input7" class="form-control mb-4">
+                <h4>* Number 3</h4>
+                <input type="text" id="input8" class="form-control mb-4">
+                <h4>* Number 4</h4>
+                <input type="text" id="input9" class="form-control mb-4">
+                <h4>* Number 5</h4>
+                <input type="text" id="input10" class="form-control mb-4">
+                <h5 id="ans3" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="largest()">
+                    Get
+                </button>
+            </div>
+        </div>
+        <div class="row positive_nagetive">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Positive / Nagetive *</h1>
+                <input type="text" id="input11" class="form-control mb-4">
+                <h5 id="ans4" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="positive_nagetive()">
+                    Positive / Nagetive
+                </button>
+            </div>
+        </div>
+        <div class="row grading">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Grading System. *</h1>
+                <input type="text" id="input12" class="form-control mb-4">
+                <h5 id="ans5" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="grading()">
+                    Grade
+                </button>
+            </div>
+        </div>
+        <div class="row tax">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Tax *</h1>
+                <input type="text" id="input13" class="form-control mb-4">
+                <h5 id="ans6" class="text-secondary mt-3">Answer is here when click calculate button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="tax()">
+                    Tax
+                </button>
+            </div>
+        </div>
+        <div class="row swap">
+            <div class="col-12 col-md-6">
+                <h1 class="my-5">* Swap *</h1>
+                <h4>* Number 1</h4>
+                <input type="text" id="input14" class="form-control mb-4">
+                <h4>* Number 2</h4>
+                <input type="text" id="input15" class="form-control mb-4">
+                <h4>* Number 3</h4>
+                <input type="text" id="input16" class="form-control mb-4">
+                <h5 id="ans7" class="text-secondary mt-3">Answer is here when click swap button</h5>
+                <button class="btn col-6 col-md-3 col-lg-2 btn-outline-primary" onclick="swap()">
+                    Swap
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function hide() {
+        document.querySelector('.electricity').classList.remove("show");
+        document.querySelector('.smallest').classList.remove("show");
+        document.querySelector('.largest').classList.remove("show");
+        document.querySelector('.positive_nagetive').classList.remove("show");
+        document.querySelector('.grading').classList.remove("show");
+        document.querySelector('.tax').classList.remove("show");
+        document.querySelector('.swap').classList.remove("show");
+        document.querySelector('.btn1').classList.remove("active");
+        document.querySelector('.btn2').classList.remove("active");
+        document.querySelector('.btn3').classList.remove("active");
+        document.querySelector('.btn4').classList.remove("active");
+        document.querySelector('.btn5').classList.remove("active");
+        document.querySelector('.btn6').classList.remove("active");
+        document.querySelector('.btn7').classList.remove("active");
+    }
+    function electricityscreen() {
+        hide()
+        document.querySelector('.electricity').classList.add("show");
+        document.querySelector('.btn1').classList.add("active");
+    }
+    function smallestscreen() {
+        hide()
+        document.querySelector('.smallest').classList.add("show");
+        document.querySelector('.btn2').classList.add("active");
+    }
+    function largestscreen() {
+        hide()
+        document.querySelector('.largest').classList.add("show");
+        document.querySelector('.btn3').classList.add("active");
+    }
+    function positive_nagetivescreen() {
+        hide()
+        document.querySelector('.positive_nagetive').classList.add("show");
+        document.querySelector('.btn4').classList.add("active");
+    }
+    function gradingscreen() {
+        hide()
+        document.querySelector('.grading').classList.add("show");
+        document.querySelector('.btn5').classList.add("active");
+    }
+    function taxscreen() {
+        hide()
+        document.querySelector('.tax').classList.add("show");
+        document.querySelector('.btn6').classList.add("active");
+    }
+    function swapscreen() {
+        hide()
+        document.querySelector('.swap').classList.add("show");
+        document.querySelector('.btn7').classList.add("active");
+    }
+    function electricity() {
+        var a = document.getElementById("input1").value
+        if(a <= 100){
+            document.getElementById('ans1').innerHTML = a + "$"
+        }
+        else if(a > 100 && a <= 200){
+            var b = 100+((a-100)*2)
+            document.getElementById('ans1').innerHTML = b + "$"
+        }
+        else{
+            var b = 300+((a-200)*3)
+            document.getElementById('ans1').innerHTML = b + "$"
+        }
+    }
+    function smallest() {
+        var a = document.getElementById("input2").value
+        var b = document.getElementById("input3").value
+        var c = document.getElementById("input4").value
+        var d = document.getElementById("input5").value
+        if(a < b && a < c && a < d){
+            document.getElementById('ans2').innerHTML = a
+        }
+        else if(b < c && b < d){
+            document.getElementById('ans2').innerHTML = b
+        }
+        else if(c < d){
+            document.getElementById('ans2').innerHTML = c
+        }
+        else{
+            document.getElementById('ans2').innerHTML = d
+        }
+    }
+    function largest() {
+        var a = document.getElementById("input6").value
+        var b = document.getElementById("input7").value
+        var c = document.getElementById("input8").value
+        var d = document.getElementById("input9").value
+        var e = document.getElementById("input10").value
+        if(a > b && a > c && a > d && a > e){
+            document.getElementById('ans3').innerHTML = a
+        }
+        else if(b > c && b > d && b > e){
+            document.getElementById('ans3').innerHTML = b
+        }
+        else if(c > d && c > e){
+            document.getElementById('ans3').innerHTML = c
+        }
+        else if(d > e){
+            document.getElementById('ans3').innerHTML = d
+        }
+        else{
+            document.getElementById('ans3').innerHTML = e
+        }
+    }
+    function positive_nagetive() {
+        var a = document.getElementById("input11").value
+        if(a < 0){
+            document.getElementById('ans4').innerHTML = "Nagetive"
+        }
+        else if(a > 0){
+            document.getElementById('ans4').innerHTML = "Positive"
+        }
+        else{
+            document.getElementById('ans4').innerHTML = "Zero"
+        }
+    }
+    function grading() {
+        var a = document.getElementById("input12").value
+        if(a >= 90 && a <=100){
+            document.getElementById('ans5').innerHTML = "A"
+        }
+        else if(a >= 80 && a <=89){
+            document.getElementById('ans5').innerHTML = "B"
+        }
+        else if(a > 70 && a <=79){
+            document.getElementById('ans5').innerHTML = "C"
+        }
+        else if(a > 60 && a <=69){
+            document.getElementById('ans5').innerHTML = "D"
+        }
+        else{
+            document.getElementById('ans5').innerHTML = "Fail"
+        }
+    }
+    function tax() {
+        var a = document.getElementById("input13").value
+        if(a > 0 && a <=10000){
+            var ans = (a*5)/100
+            document.getElementById('ans6').innerHTML = ans
+        }
+        else if(a > 10000 && a <=20000){
+            var ans = (a*10)/100
+            document.getElementById('ans6').innerHTML = ans
+        }
+        else if(a > 20000 && a <=30000){
+            var ans = (a*15)/100
+            document.getElementById('ans6').innerHTML = ans
+        }
+        else if(a > 30000 && a <=40000){
+            var ans = (a*20)/100
+            document.getElementById('ans6').innerHTML = ans
+        }
+        else{
+            var ans = (a*25)/100
+            document.getElementById('ans6').innerHTML = ans
+        }
+    }
+    function swap() {
+        var a = document.getElementById("input14").value
+        var b = document.getElementById("input15").value
+        var c = document.getElementById("input16").value
+        document.getElementById("ans7").innerHTML = "Number 1 :"+ c+ " Number 2 :"+a+ " Number 3 : "+ b
+    }
+</script> 
