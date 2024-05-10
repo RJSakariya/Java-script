@@ -223,13 +223,13 @@
         var b = document.getElementById("input3").value
         var c = document.getElementById("input4").value
         var d = document.getElementById("input5").value
-        if(a < b && a < c && a < d){
+        if(+a < +b && +a < +c && +a < +d){
             document.getElementById('ans2').innerHTML = a
         }
-        else if(b < c && b < d){
+        else if(+b < +c && +b < +d){
             document.getElementById('ans2').innerHTML = b
         }
-        else if(c < d){
+        else if(+c < +d){
             document.getElementById('ans2').innerHTML = c
         }
         else{
@@ -242,16 +242,16 @@
         var c = document.getElementById("input8").value
         var d = document.getElementById("input9").value
         var e = document.getElementById("input10").value
-        if(a > b && a > c && a > d && a > e){
+        if(+a > +b && +a > +c && a > d && +a > +e){
             document.getElementById('ans3').innerHTML = a
         }
-        else if(b > c && b > d && b > e){
+        else if(+b > +c && +b > +d && +b > +e){
             document.getElementById('ans3').innerHTML = b
         }
-        else if(c > d && c > e){
+        else if(+c > +d && +c > +e){
             document.getElementById('ans3').innerHTML = c
         }
-        else if(d > e){
+        else if(+d > +e){
             document.getElementById('ans3').innerHTML = d
         }
         else{
@@ -260,10 +260,10 @@
     }
     function positive_nagetive() {
         var a = document.getElementById("input11").value
-        if(a < 0){
+        if(+a < 0){
             document.getElementById('ans4').innerHTML = "Nagetive"
         }
-        else if(a > 0){
+        else if(+a > 0){
             document.getElementById('ans4').innerHTML = "Positive"
         }
         else{
@@ -272,16 +272,16 @@
     }
     function grading() {
         var a = document.getElementById("input12").value
-        if(a >= 90 && a <=100){
+        if(+a >= 90 && +a <=100){
             document.getElementById('ans5').innerHTML = "A"
         }
-        else if(a >= 80 && a <=89){
+        else if(+a >= 80 && +a <=89){
             document.getElementById('ans5').innerHTML = "B"
         }
-        else if(a > 70 && a <=79){
+        else if(+a > 70 && +a <=79){
             document.getElementById('ans5').innerHTML = "C"
         }
-        else if(a > 60 && a <=69){
+        else if(+a > 60 && +a <=69){
             document.getElementById('ans5').innerHTML = "D"
         }
         else{
