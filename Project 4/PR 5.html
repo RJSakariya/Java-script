@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Starbucks Menu</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <main class="container">
+        <h1 class="mt-5">Starbucks Menu</h1>
+
+        <div class="mt-3">
+            <label for="menuCategory" class="form-label">Select a Category:</label>
+            <select id="menuCategory" class="form-select" onchange="displayMenu()">
+                <option value="">--Select--</option>
+                <option value="hotCoffees">Hot Coffees</option>
+                <option value="coldCoffees">Cold Coffees</option>
+                <option value="frappuccino">Frappuccino® Blended Beverages</option>
+                <option value="hotTeas">Hot Teas</option>
+                <option value="coldDrinks">Cold Drinks</option>
+                <option value="bakery">Bakery</option>
+            </select>
+        </div>
+
+        <div id="menuItems" class="mt-3"></div>
+    </main>
+
+    <script>
+        const menus = {
+            hotCoffees: ["Caffè Americano", "Caffè Latte", "Cappuccino", "Espresso", "Flat White"],
+            coldCoffees: ["Iced Coffee", "Cold Brew", "Iced Americano", "Iced Latte", "Iced Cappuccino"],
+            frappuccino: ["Coffee Frappuccino®", "Mocha Frappuccino®", "Caramel Frappuccino®", "Java Chip Frappuccino®", "Strawberry Frappuccino®"],
+            hotTeas: ["Chai Tea", "Green Tea", "Black Tea", "Herbal Tea", "Matcha Tea"],
+            coldDrinks: ["Iced Chai Tea", "Iced Green Tea", "Iced Black Tea", "Lemonade", "Pink Drink"],
+            bakery: ["Croissant", "Bagel", "Muffin", "Cookie", "Brownie"]
+        };
+
+        function displayMenu() {
+            const category = document.getElementById("menuCategory").value;
+            const menuItemsDiv = document.getElementById("menuItems");
+            menuItemsDiv.innerHTML = ""; // Clear previous menu items
+
+            if (category && menus[category]) {
+                const items = menus[category];
+                const ul = document.createElement("ul");
+                ul.className = "list-group";
+
+                items.forEach(item => {
+                    const li = document.createElement("li");
+                    li.className = "list-group-item";
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+
+                menuItemsDiv.appendChild(ul);
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
