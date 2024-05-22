@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Check for "A"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Check if String Starts or Ends with "A"</h1>
+        <input type="text" id="inputString" placeholder="Enter a string">
+        <button onclick="checkString()">Check</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function hasA(str) {
+            if (str.length === 0) {
+                return false;
+            }
+            const firstChar = str.charAt(0).toUpperCase();
+            const lastChar = str.charAt(str.length - 1).toUpperCase();
+            return firstChar === 'A' || lastChar === 'A';
+        }
+        function checkString() {
+            const inputString = document.getElementById('inputString').value;
+            const result = hasA(inputString);
+            document.getElementById('result').innerText = result ? "The string starts or ends with 'A'" : "The string does not start or end with 'A'";
+        }
+        
+    </script>
+</body>
+
+</html>
