@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container">
+        <section class="row">
+            <input type="text" id="kilometers" placeholder="kilometers" class="form-control mt-5">
+            <button onclick="kilometers()" id="ans1" class="btn btn-primary mt-3">
+                miles
+            </button>
+            <input type="text" id="miles" placeholder="miles" class="form-control mt-3">
+            <button onclick="miles()" id="ans2" class="btn btn-primary mt-3">
+                kilometers
+            </button>
+        </section>
+    </div>
+</body>
+
+</html>
+<script>
+
+    function kilometers() {
+        let a = document.getElementById("kilometers").value
+        let kilometers = (+a * 0.621371)
+        document.getElementById("ans1").innerHTML = kilometers
+    }
+    function miles() {
+        let a = document.getElementById("miles").value
+        let miles = (a * 1.609344)
+        document.getElementById("ans2").innerHTML = miles
+    }
+</script>
