@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    function basicfact(n) {
+        if (n <= 1) {
+            return 1
+        }
+        else {
+            return n * basicfact(n - 1)
+        }
+    }
+    console.log(basicfact(5));
+
+    let name = function namefact(n) {
+        if (n <= 1) {
+            return 1
+        }
+        else {
+            return n * namefact(n - 1)
+        }
+
+    }
+    console.log(name(6));
+
+    let iife = (function iifefact(n) {
+        if (n <= 1) {
+            return 1
+        }
+        else {
+            return n * iifefact(n - 1)
+        }
+    })
+    console.log(iife(7));
+
+    arrowfact = (n) => {
+        if (n <= 1) {
+            return 1
+        }
+        else {
+            return n * arrowfact(n - 1)
+        }
+    }
+    console.log(arrowfact(8));
+</script>
