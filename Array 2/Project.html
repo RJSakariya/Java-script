@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //map
+    var array = [7,8,10,12,9]
+    ans = array.map((el)=>{
+        return el
+    })
+    document.write(ans+"<br>")
+    //filter
+    var array = [7,8,10,35,9,19]
+    ans = array.filter((el)=>{
+        return el > 18
+    })
+    document.write(ans+"<br>")
+    //IndexOf
+    var array = ["banana","apple","mango"]
+    ans = array.indexOf("apple")
+    document.write(ans+"<br>")
+    //Includes
+    var array = ["red","green","blue",'white']
+    ans = array.includes("green")
+    document.write(ans+"<br>")
+    //Every
+    var array = [50,70,100,150,10]
+    function check(score){
+        return score >= 60
+    }
+    ans = array.every(check)
+    document.write(ans+"<br>")
+    //some
+    var array = [50,70,100,150,10]
+    function check(Fahrenheit){
+        return Fahrenheit >= 100
+    }
+    ans = array.some(check)
+    document.write(ans+"<br>")
+    //map
+    var array = [7,8,10,12,9]
+    ans = array.map((el)=>{
+        return el + 1
+    })
+    document.write(ans+"<br>")
+    //filter
+    var array = [7,8,10,35,9,19]
+    ans = array.filter((el)=>{
+        return el % 2 == 0
+    })
+    document.write(ans+"<br>")
+    //filter
+    var array = [7,8,10,35,9,19]
+    ans = array.filter((el)=>{
+        return el % 2 != 0
+    })
+    document.write(ans+"<br>")
+</script>
