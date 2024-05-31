@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var array = [5, 3, 1, 2, 4, 7, 6]
+    array.forEach((el)=>{0
+        document.write("Elements multiply with 3: "+el*3 + "<br>")
+    })
+
+    var ans = array.reduce((sum,el)=>{
+       return sum += el 
+    },0)
+    document.write("<br>Sum of all Elements: "+ans + "<br>")
+    var ans = array.filter((el)=>{
+        return el
+    }).reduce((m,el)=>{
+       return m *= el 
+    },1)
+    document.write("<br>Product  of all Elements: "+ans + "<br>")
+    var ans = array.filter((el)=>{
+        return el % 2 == 0
+    }).reduce((sum,el)=>{
+       return sum += el 
+    },0)
+    document.write("<br>Sum of even Elements: "+ans + "<br>")
+    var array = ["Sanjay","Amit","Jay","Ajay","Nayan"]
+    var ans = array.filter((el)=>{
+        return el.length > 4
+    }).map((el)=>{
+        return "Hello "+el
+    })
+    document.write(ans + "<br>")
+    ans = array.includes("Jay")
+    document.write(ans+"<br>")
+    var array = [5, 3, 1, 2, 4, 7, 6]
+    var ans = array.filter((num)=>{
+        return num % 2 == 0
+    }).map((num) => {
+        return num * num
+    });
+    document.write(ans+"<br>")
+    var array = ["Sanjay","Amit","Jay","Ajay","Nayan"]
+    var ans = array.map((el)=>{
+        return el.toString().toUpperCase()
+    }).filter((el)=>{
+        return el.length < 5
+    })
+    document.write(ans+"<br>")
+</script>
