@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let person = {
+            name: "John",
+            surname: "Deo",
+            age: 12
+        }
+        for (key in person) {
+            document.write(key + "<br>")
+        }
+        document.write("<br>")
+        let car = {
+            name: "Rolls-Royce Ghost",
+            price: "Rs.6.95 - 7.95 Cr",
+            Avarage: "6.33 kmpl"
+        }
+        for (key in car) {
+            document.write(car[key] + "<br>")
+        }
+        document.write("<br>")
+        let book = {
+            name: "Karan",
+            "product manager": "sanjay",
+            pages: 300
+        }
+        book.pages = 200
+        document.write(book.pages + "<br><br>")
+        let user = {
+            name: "karan",
+            lastname: "kumar",
+            password: "karanbhai"
+        }
+        delete user.password
+        for (key in user) {
+            document.write(key + " = " + user[key] + "<br>")
+        }
+        document.write("<br>")
+        let laptop = {
+            name: "Lanovo",
+            RAM: "16GB"
+        }
+        laptop.price = "rs.49999/-"
+        for (key in laptop) {
+            document.write(key + " = " + laptop[key] + "<br>")
+        }
+        document.write("<br>")
+        let student = {
+            name: "John",
+            age: 10,
+            grid: 5231,
+            greet: function (a) {
+                document.write(a +"! Have a nice day. <br>")
+            }
+        }
+        student.greet(student.name)
+        delete student.greet
+        for (key in student) {
+            document.write(key + " = " + student[key]+"<br>");
+        }
+    </script>
+</body>
+
+</html>
