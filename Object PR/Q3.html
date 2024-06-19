@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Categorize_Quotes = [
+            {title: "Democracy and Education",author: "John Dewey",category:"Education",price:70,quantityAvailable:5},
+            {title: "The Home and the School",author: "JWB Douglas",category:"Education",price:100,quantityAvailable:7},
+            {title: "A House for Mr. Biswas",author: "V.S. Naipaul",category:"story",price:50,quantityAvailable:3},
+            {title: "Truck",author: "Donald Crews",category:"cartoon",price:60,quantityAvailable:6},
+            {title: "Deschooling Society",author: "Ivan Illich",category:"Education",price:10,quantityAvailable:1},
+            ];
+        var edu = Categorize_Quotes.filter((el)=>{
+            return el.price > 60
+        }).map((el)=>{
+            return el
+        })
+        console.log(edu)
+    </script>
+</body>
+</html>
