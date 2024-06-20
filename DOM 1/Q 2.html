@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+
+    <h1 id="firstname">Your FirstName</h1>
+    <div id="lastname">
+        Your LastName </div>
+    <p id="fullname">Your First&LastName</p>
+
+    <hr />
+    <button onclick="setFirstName()">FIRSTNAME</button>
+    <button onclick="setLastName()">LASTNAME</button>
+    <button onclick="setFullName()">FIRSTNAME NAME</button>
+    <button onclick="resetDefaults()">RESET DEFAULTS</button>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+
+    function setFirstName() {
+        document.querySelector("#firstname").textContent = "Rahil"
+    }
+
+
+    function setLastName() {
+        document.querySelector("#lastname").textContent = "Sakariya"
+    }
+
+
+
+    function setFullName() {
+        let firstname = document.querySelector("#firstname").textContent = "Rahil"
+        let lastname = document.querySelector("#lastname").textContent = "Sakariya"
+        document.querySelector("#fullname").textContent = firstname + " " + lastname
+    }
+
+
+
+
+    function resetDefaults() {
+        let firstname = document.querySelector("#firstname").textContent = "FIRSTNAME"
+        let lastname = document.querySelector("#lastname").textContent = "LASTNAME"
+        document.querySelector("#fullname").textContent = "FIRSTNAME NAME"
+
+    }
+
+
+</script>
