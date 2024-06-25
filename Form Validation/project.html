@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <div class="error" id="usernameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <div class="error" id="passwordError"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword">
+                <div class="error" id="confirmPasswordError"></div>
+            </div>
+            <button type="button" class="btn" onclick="validateForm()">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            try {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var confirmPassword = document.getElementById("confirmPassword").value;
+
+                var valid = "t";
+                if (username === "" || password === "" || confirmPassword === "") {
+                    if (username === "") {
+                        throw ("ue");
+                    }
+                    if (password === "") {
+                        throw ("pe");
+                    }
+                    if(confirmPassword === "") {
+                        throw ("cpe");
+                    }
+                    valid = "f";
+                }
+                if (password.length < 8) {
+                    throw ("pl");
+                    valid = "f";
+                }
+                if (password !== confirmPassword) {
+                    throw ("m");
+                    valid = "f";
+                }
+
+                if (valid == "t") {
+                    alert("Form submitted successfully!");
+                }
+            }catch(e){
+                document.getElementById("usernameError").innerText = "";
+                document.getElementById("passwordError").innerText = "";
+                document.getElementById("confirmPasswordError").innerText = "";
+
+                if(e === "ue"){
+                    document.getElementById("usernameError").innerText = "Username is required.";
+                }
+                if(e === "pe"){
+                    document.getElementById("passwordError").innerText = "Password is required.";
+                }
+                if(e === "cpe"){
+                    document.getElementById("confirmPasswordError").innerText = "Confirm Password is required.";
+                }
+                if(e === "pl"){
+                    document.getElementById("passwordError").innerText = "Password must be 8 and more than 8 characters.";
+                }
+                if(e === "m"){
+                    document.getElementById("confirmPasswordError").innerText = "Passwords do not match.";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
