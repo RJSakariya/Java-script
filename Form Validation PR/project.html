@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .container-fluid {
+            background: url("https://wallpaper.dog/large/20449448.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .row {
+            height: 100vh;
+        }
+        .tilt_box_wrap{
+            perspective: 1000px;
+            height: fit-content;
+            transition: all 0.5s ease-out;
+            position: relative;
+        }
+        .tilt_box_wrap:hover{
+            transform: scale(1.1);
+        }
+
+        .tilt_box {
+            background: #ffffff4c;
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: all 0.5s ease-out;
+            transform: rotateX(0deg) rotateY(0deg);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .t_over {
+            width: 33.33%;
+            height: 33.33%;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .t_over:nth-child(1) {
+            top: 0;
+            left: 0;
+        }
+
+        .t_over:nth-child(2) {
+            top: 0;
+            left: 33.33%;
+        }
+
+        .t_over:nth-child(3) {
+            top: 0;
+            left: 66.66%;
+        }
+
+        .t_over:nth-child(4) {
+            top: 33.33%;
+            left: 0;
+        }
+
+        .t_over:nth-child(5) {
+            top: 33.33%;
+            left: 33.33%;
+        }
+
+        .t_over:nth-child(6) {
+            top: 33.33%;
+            left: 66.66%;
+        }
+
+        .t_over:nth-child(7) {
+            top: 66.66%;
+            left: 0;
+        }
+
+        .t_over:nth-child(8) {
+            top: 66.66%;
+            left: 33.33%;
+        }
+
+        .t_over:nth-child(9) {
+            top: 66.66%;
+            left: 66.66%;
+        }
+
+        .t_over:nth-child(1):hover~.tilt_box {
+            transform: rotateX(-20deg) rotateY(20deg);
+            text-shadow: -5px -5px 2px rgba(0, 0, 0, 0.40);
+        }
+        .t_over:nth-child(1):hover~.tilt_box .form-control,.t_over:nth-child(1):hover~.tilt_box .btn{
+            box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.20);
+        }
+
+        .t_over:nth-child(2):hover~.tilt_box {
+            transform: rotateX(-20deg) rotateY(0deg);
+        }
+
+        .t_over:nth-child(3):hover~.tilt_box {
+            transform: rotateX(-20deg) rotateY(-20deg);
+        }
+
+        .t_over:nth-child(4):hover~.tilt_box {
+            transform: rotateX(0deg) rotateY(20deg);
+        }
+
+        .t_over:nth-child(5):hover~.tilt_box {
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+
+        .t_over:nth-child(6):hover~.tilt_box {
+            transform: rotateX(0deg) rotateY(-20deg);
+        }
+
+        .t_over:nth-child(7):hover~.tilt_box {
+            transform: rotateX(20deg) rotateY(20deg);
+        }
+
+        .t_over:nth-child(8):hover~.tilt_box {
+            transform: rotateX(20deg) rotateY(0deg);
+        }
+
+        .t_over:nth-child(9):hover~.tilt_box {
+            transform: rotateX(20deg) rotateY(-20deg);
+        }
+
+        .link {
+            text-align: right;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: white;
+            font-style: italic;
+            transform: translateZ(50px);
+        }
+
+        .link a:hover {
+            color: #f0300c;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 60px;
+            font-family: "Italianno", cursive;
+            font-weight: 400;
+            font-weight: bold;
+            color: transparent;
+            background: linear-gradient(45deg, #2f0004, #680702, #f0300c, #f07468, #fdf1bb);
+            -webkit-background-clip: text;
+            transform: translateZ(50px);
+        }
+
+        label {
+            color: #f53216;
+            font-style: italic;
+            transform: translateZ(50px);
+        }
+
+        .form-control {
+            background: #ffffff4c;
+            backdrop-filter: blur(5px);
+            color: #f53216;
+            transform: translateZ(50px);
+        }
+
+        .form-control::placeholder {
+            color: #f53216;
+            font-style: italic;
+        }
+
+        .btn {
+            font-style: italic;
+            font-weight: 600;
+            transform: translateZ(50px);
+        }
+
+        .login {
+            display: block;
+            z-index: 1;
+            border: 1px solid #c9c9c9;
+        }
+
+        .registration {
+            display: none;
+            z-index: 1;
+            border: 1px solid #c9c9c9;
+        }
+
+        .login:hover {
+            border: 1px solid #f0300c;
+        }
+
+        .login:hover .form-control {
+            border: 1px solid #f0300c;
+        }
+
+        .registration:hover {
+            border: 1px solid #f0300c;
+        }
+
+        .registration:hover .form-control {
+            border: 1px solid #f0300c;
+        }
+
+        .form-control:hover {
+            color: white;
+            background-color: #f0300c4c;
+        }
+
+        .form-control:hover::placeholder {
+            color: white;
+        }
+
+        .form-control:focus {
+            color: white;
+            background-color: #f0300c4c;
+        }
+
+        .form-control:focus::placeholder {
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center m-0">
+            <div class="col-md-4 col-lg-3 align-self-center tilt_box_wrap p-0">
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <span class="t_over"></span>
+                <div class="tilt_box p-3 rounded-3 m-4">
+                    <form action="#" class="login p-3 rounded-3">
+                        <li class="link" type="none">
+                            <a href="#" onclick="signup_page()">sign up</a>
+                        </li>
+                        <h1 class="text-center rounded-3">Login</h1>
+                        <label for="UserName">Username *</label>
+                        <input type="text" class="form-control mb-3" placeholder="Username" id="UserName"
+                            onkeyup="check(this.id)">
+                        <p id="UserNameError"></p>
+                        <label for="PassWord">Password *</label>
+                        <input type="password" class="form-control mb-3" placeholder="Password" id="PassWord">
+                        <p id="PassWordError"></p>
+                        <button class="btn btn-outline-danger col-12 mb-3" onclick="log()">Login</button>
+                    </form>
+                    <form action="#" class="registration p-3 rounded-3">
+                        <li class="link" type="none">
+                            <a href="#" onclick="login_page()">Login</a>
+                        </li>
+                        <h1 class="text-center rounded-3">Registration</h1>
+                        <label for="Username">Username *</label>
+                        <input type="text" class="form-control mb-3" placeholder="Username" id="Username"
+                            onkeyup="check(this.id)" onfocus="getinput(this.id)" onfocusout="focusout(this.id)">
+                        <p id="UsernameError"></p>
+                        <label for="Email">Email *</label>
+                        <input type="text" class="form-control mb-3" placeholder="Email" id="Email"
+                            onfocus="getinput(this.id)" onfocusout="focusout(this.id)">
+                        <p id="EmailError"></p>
+                        <label for="Password">Password *</label>
+                        <input type="text" class="form-control mb-3" placeholder="Password" id="Password"
+                            onfocus="getinput(this.id)" onfocusout="focusout(this.id)">
+                        <p id="PasswordError"></p>
+                        <label for="ConfirmPassword">Confirm Password *</label>
+                        <input type="text" class="form-control mb-3" placeholder="Confirm Password" id="ConfirmPassword"
+                            onfocus="getinput(this.id)" onfocusout="focusout(this.id)">
+                        <p id="ConfirmPasswordError"></p>
+                        <button class="btn btn-outline-danger col-12 mb-3" onclick="signup()" id="siup">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var data = [["john", "john1@gmail.com", "1234john"], ["Rahil", "Rahil1@gmail.com", "1234Rahil"]]
+    function signup_page() {
+        document.querySelector(".login").style.display = "none";
+        document.querySelector(".registration").style.display = "block";
+    }
+    function login_page() {
+        document.querySelector(".login").style.display = "block";
+        document.querySelector(".registration").style.display = "none";
+    }
+    function Checkinputs(id, errid, err) {
+        name = document.getElementById(id).value
+        try {
+            document.getElementById(errid).innerHTML = ""
+            if (name == "") {
+                throw new Error(err);
+            }
+            else {
+                ret = focusout(id)
+            }
+        } catch (e) {
+            document.getElementById(errid).innerHTML = e.message
+            document.getElementById(errid).style.color = "blue"
+            return 0;
+        }
+        return ret;
+    }
+    function getinput(id) {
+        var arr = [["Username", "UsernameError", "* Please enter username"], ["Email", "EmailError", "* Please enter email."], ["Password", "PasswordError", "* Please enter password."], ["ConfirmPassword", "ConfirmPasswordError", "* Please enter confirm password."]]
+        switch (id) {
+            case "Username":
+                for (i = 0; i < arr.length; i++) {
+                    if (id == arr[i][0]) {
+                        Checkinputs(arr[i][0], arr[i][1], "")
+                        break
+                    }
+                    Checkinputs(arr[i][0], arr[i][1], arr[i][2])
+                }
+                break;
+            case "Email":
+                for (i = 0; i < arr.length; i++) {
+                    if (id == arr[i][0]) {
+                        Checkinputs(arr[i][0], arr[i][1], "")
+                        break
+                    }
+                    Checkinputs(arr[i][0], arr[i][1], arr[i][2])
+                }
+                break;
+            case "Password":
+                for (i = 0; i < arr.length; i++) {
+                    if (id == arr[i][0]) {
+                        Checkinputs(arr[i][0], arr[i][1], "")
+                        break
+                    }
+                    Checkinputs(arr[i][0], arr[i][1], arr[i][2])
+                }
+                break;
+            case "ConfirmPassword":
+                for (i = 0; i < arr.length; i++) {
+                    if (id == arr[i][0]) {
+                        Checkinputs(arr[i][0], arr[i][1], "")
+                        break
+                    }
+                    Checkinputs(arr[i][0], arr[i][1], arr[i][2])
+                }
+                break;
+            case "siup":
+                for (i = 0; i < arr.length; i++) {
+                    ret = Checkinputs(arr[i][0], arr[i][1], arr[i][2])
+                }
+                return ret;
+        }
+        for (var j = i; j < arr.length; j++) {
+            Checkinputs(arr[j][0], arr[j][1], "")
+        }
+    }
+    function check(id) {
+        username = document.getElementById(id).value
+        try {
+            document.getElementById(id + "Error").innerHTML = ""
+            if (/\d/.test(username)) {
+                throw new Error("* Do not enter number in username");
+            }
+        } catch (e) {
+            document.getElementById(id + "Error").innerHTML = e.message
+            document.getElementById(id + "Error").style.color = "blue"
+        }
+    }
+    function checkinputs(id, errid, value) {
+        try {
+            if (id == "UserName") {
+                document.getElementById(errid).innerHTML = ""
+                if (value == "") {
+                    throw new Error("* Please enter username");
+                }
+                else if (/\d/.test(value)) {
+                    throw new Error("* Do not enter number in username");
+                } else {
+                    var r = 0
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i][0] == value) {
+                            r = 1
+                            break
+                        }
+                    }
+                    if (r == 0) {
+                        throw new Error("* Not username in data.")
+                    } else {
+                        document.getElementById(errid).innerHTML = ""
+                    }
+                }
+            }
+            if (id == "PassWord") {
+                document.getElementById(errid).innerHTML = ""
+                username = document.getElementById("UserName").value
+                if (value == "") {
+                    throw new Error("* Please enter password");
+                }
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i][0] == (username)) {
+                        if (data[i][2] != value) {
+                            throw new Error("* Do not match password");
+                        }
+                        if (data[i][2] == value) {
+                            alert("login successfully.");
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            document.getElementById(errid).innerHTML = e.message
+            document.getElementById(errid).style.color = "blue"
+        }
+    }
+    function log() {
+        username = document.getElementById("UserName").value
+        password = document.getElementById("PassWord").value
+        checkinputs("UserName", "UserNameError", username)
+        checkinputs("PassWord", "PassWordError", password)
+    }
+
+    function focusout(id) {
+        var arr = [["Email", "EmailError", "* Please enter valid email."], ["Password", "PasswordError", "* Please enter minimum 8 digits in password."], ["ConfirmPassword", "ConfirmPasswordError", "* Please enter confirm password."]]
+        for (var i = 0; i < arr.length; i++) {
+            if (id == arr[i][0]) {
+                var ret = valid(arr[i][0], arr[i][1], arr[i][2])
+                if (ret == 0) {
+                    return 0;
+                }
+            }
+        }
+        return ret
+    }
+
+    function valid(id, errid, err) {
+        switch (id) {
+            case "Email":
+                var email = document.getElementById(id).value
+                try {
+                    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+                        throw new Error(err)
+                        return 0
+                    }
+                    return 1
+                } catch (e) {
+                    document.getElementById(errid).innerHTML = e.message
+                    document.getElementById(errid).style.color = "blue"
+                }
+                break;
+            case "Password":
+                var password = document.getElementById(id).value
+                try {
+                    if (password.length < 8) {
+                        throw new Error(err)
+                        return 0
+                    }
+                    else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password)) {
+                        throw new Error("* Please enter strong password which can digits,small and capital charcters.")
+                        return 0
+                    }
+                    return 1
+                } catch (e) {
+                    document.getElementById(errid).innerHTML = e.message
+                    document.getElementById(errid).style.color = "blue"
+                }
+                break;
+            case "ConfirmPassword":
+                var password = document.getElementById("Password").value
+                var confirmPassword = document.getElementById(id).value
+                try {
+                    if (confirmPassword == "") {
+                        throw new Error(err)
+                        return 0
+                    }
+                    else if (password != confirmPassword) {
+                        throw new Error("* Please enter confirm password same as password.")
+                        return 0
+                    }
+                    return 1
+                }
+                catch (e) {
+                    document.getElementById(errid).innerHTML = e.message
+                    document.getElementById(errid).style.color = "blue"
+                }
+        }
+    }
+    function signup() {
+        var username = document.getElementById("Username").value
+        var email = document.getElementById("Email").value
+        var password = document.getElementById("Password").value
+        var ret = getinput("siup")
+        if (ret == 1) {
+            for (i = 0; i < data.length; i++) {
+                if (data[i][0] == username) {
+                    ret = 0
+                    document.getElementById("UsernameError").innerHTML = "Username is already taken."
+                    break
+                }
+            }
+        }
+        if (ret == 1) {
+            data[data.length] = [username, email, password]
+            login_page()
+        }
+    }
+
+</script>
