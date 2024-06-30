@@ -79,7 +79,7 @@
             if (phone.length < 10) {
                 throw new Error("phone number is required!")
             }
-            if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) {
+            if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
                 throw new Error("enter valied email")
             }
             if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password) === false) {
