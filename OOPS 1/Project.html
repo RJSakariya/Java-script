@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    class Person{
+        name="John Doe";
+        age=30;
+        occupation="Software Developer";
+        getAge(age){
+            return age;
+        }
+        getName(name){
+            return name;
+        }
+        getOccupation(occupation){
+            return occupation;
+        }
+    }
+
+    let person = new Person();
+    console.log(person.getAge(person.age));
+    console.log(person.getName(person.name));
+    console.log(person.getOccupation(person.occupation));
+    class Car{
+        name="Rolls Royce La Rose Noire Droptail";
+        price="Rs.250.cr";
+        color="Red";
+        getPrice(price){
+            return price;
+        }
+        getName(name){
+            return name;
+        }
+        getColor(color){
+            return color;
+        }
+    }
+
+    let car = new Car();
+    console.log(car.getPrice(car.price));
+    console.log(car.getName(car.name));
+    console.log(car.getColor(car.color));
+    class Calculation{
+        sum(a,b){
+            return a+b;
+        }
+        sub(a,b){
+            return a-b;
+        }
+    }
+    let calculation = new Calculation();
+    console.log(calculation.sum(10,5));
+    console.log(calculation.sub(10,5));
+</script>
