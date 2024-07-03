@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    class Animal {
+        constructor(sound) {
+            this.sound = sound;
+        }
+        makeSound(sound) {
+            return sound;
+        }
+    }
+
+    class Dog extends Animal {
+        name = "Dog"
+    }
+
+    class Cat extends Animal {
+        name = "Cat"
+    }
+
+    class Bird extends Animal {
+        name = "Bird"
+    }
+
+    const dog = new Dog("Woof!");
+    const cat = new Cat("Meow!");
+    const bird = new Bird("Tweet!");
+
+    console.log(dog.name ,dog.makeSound(dog.sound));
+    console.log(cat.name,cat.makeSound(cat.sound));
+    console.log(bird.name,bird.makeSound(bird.sound));
+    class Food {
+        cook(name) {
+            return name;
+        }
+    }
+
+    class Pizza extends Food {
+        method = "\nMake your own dough. Mix it up in the morning (or the night before) and it will be waiting for you come dinnertime.\nKeep the sauce and toppings simple. A simple, no-cook red sauce is best. ...\nBake it hot. Crank the oven to its highest setting and let it heat for at least half an hour.";
+    }
+
+    class Sushi extends Food {
+        method = "\n1 Cook rice in water until it boils. ...\n2 Meanwhile, chop filling into strips or sticks.\n3 Mix sugar and vinegar. ...\n4 On your sushi bamboo mat, spread out 1 sheet of nori.\n5 Cover it as thinly as you can with the rice mixture. ...";
+    }
+
+    class Burger extends Food {
+        method = "\nPreheat your griddle on medium-high. Place balls of seasoned ground meat onto the griddle and flatten into a patty with your spatula. Place a generous pile of thinly sliced raw onion on top. Cook for about a minute, depending on size.";
+    }
+
+    const pizza = new Pizza();
+    const sushi = new Sushi();
+    const burger = new Burger();
+
+    console.log(pizza.cook("Cooking Pizza..."),pizza.method);
+    console.log(sushi.cook("Cooking Sushi..."),sushi.method);
+    console.log(burger.cook("Cooking Burger..."),burger.method);
+</script>
