@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //Q 1
+    var arr = [1, 2, 3, 4, 5]
+    Array.prototype.map = function (el) {
+        var newarr = []
+
+        for (var i = 0; i < this.length; i++) {
+            newarr.push(el(this[i]))
+        }
+        return newarr
+    }
+    var ans = arr.map((el) => {
+        return el * 2
+    })
+    console.log(ans);
+    var arr = [1, 2, 3, 4, 5]
+    Array.prototype.filter = function (el) {
+        var newarr = []
+        for (var i = 0; i < this.length; i++) {
+            if (el(this[i])) {
+                newarr.push((this[i]))
+            }
+        }
+        return newarr
+    }
+    var ans = arr.filter((el) => {
+        return el % 2
+    })
+    console.log(ans);
+
+    //Q 2
+    class Automobile {
+        constructor(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+        }
+    }
+    class ElectricVehicle extends Automobile {
+        constructor(make, model, year, batteryCapacity) {
+            super(make, model, year);
+            this.batteryCapacity = batteryCapacity;
+        }
+
+        chargeBattery(amount) {
+            console.log(`Battery charged by ${amount} kWh.`);
+        }
+
+        displayBatteryStatus() {
+            console.log(`Battery capacity is ${this.batteryCapacity} kWh.`);
+        }
+    }
+    let myElectricCar = new ElectricVehicle("Tesla", "Model S", 2023, 100);
+    console.log(myElectricCar.make);
+    console.log(myElectricCar.model);
+    console.log(myElectricCar.year);
+    console.log(myElectricCar.batteryCapacity);
+    myElectricCar.chargeBattery(50);
+    myElectricCar.displayBatteryStatus();
+
+    //Q 3
+    class Animal {
+        constructor(name) {
+            this.name = name;
+        }
+
+        eat() {
+            console.log(`${this.name} is eating.`);
+        }
+
+        sleep() {
+            console.log(`${this.name} is sleeping.`);
+        }
+
+        sound() {
+            throw new Error("Subclass must implement abstract method");
+        }
+    }
+
+    class Cat extends Animal {
+        sound() {
+            console.log(`${this.name} says: Meow`);
+        }
+    }
+
+    class Dog extends Animal {
+        sound() {
+            console.log(`${this.name} says: Woof`);
+        }
+    }
+
+    const cat = new Cat("Meow");
+    const dog = new Dog("Amit");
+
+    cat.eat();
+    cat.sleep();
+    cat.sound(); 
+
+    dog.eat(); 
+    dog.sleep(); 
+    dog.sound();
+
+</script>
