@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    h1{
+        background-color: black;
+        color: white;
+    }
+    .birth-day{
+        height: 200px;
+        width: 100%;
+        font-family: "Ga Maamli", sans-serif;
+        font-size: 25px;
+        color: green;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .birth-day img{
+        height: 150px;
+        width: 150px;
+        display: none;
+    }
+    .counters{
+        height: 200px;
+        width: 100%;
+        background-color: #02395a;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .counter{
+        height: 100%;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+    .counter i{
+        font-size: 20px;
+    }
+    .counter h2{
+        margin-top: 10px;
+    }
+    .counter p{
+        color: rgb(201, 201, 201);
+        margin-top: 5px;
+    }
+</style>
+<body>
+    <h1>Birth Day Countdown:</h1>
+    <div class="birth-day">
+        <h2>10</h2>
+        <img src="https://talkingsoberfiles.s3.dualstack.us-west-2.amazonaws.com/original/3X/d/e/decea428ea650e04b849f1158377deacb58d78e1.gif" alt="">
+    </div>
+    <div class="counters">
+        <div class="counter">
+            <div class="icon">
+                <i class="fa-regular fa-user"></i>
+                <h2><font class="font1">37500</font> <span>+</span></h2>
+                <p>Students Trained</p>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="icon">
+                <i class="fa-regular fa-building"></i>
+                <h2><font class="font2">22</font> <span>+</span></h2>
+                <p>Branches</p>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="icon">
+                <i class="fa-solid fa-certificate"></i>
+                <h2><font class="font3">8</font> <span>+</span></h2>
+                <p>Certification</p>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="icon">
+                <i class="fa-regular fa-user"></i>
+                <h2><font class="font4">50</font> <span>+</span></h2>
+                <p>Approved Course</p>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="icon">
+                <i class="fa-regular fa-user"></i>
+                <h2><font class="font5">1500</font> <span>+</span></h2>
+                <p>Companies Tie-Ups</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var count = 10
+    var counter = setInterval(function(){
+        count = count - 1
+        document.querySelector("h2").innerHTML = count
+        if (count < 4){
+            document.querySelector("h2").style.color = "red"
+        }
+        if(count === 0){
+            clearInterval(counter)
+            document.querySelector("h2").innerHTML = "Happy Birthday"
+            document.querySelector("h2").style.color = "yellow"
+            document.querySelector("h2").style.fontSize = "20px"
+            document.querySelector("h2").style.fontWeight = "400"
+            document.querySelector("img").style.display = "block"
+        }
+    },1000)
+
+    var counters = document.querySelector(".font1").textContent
+    counts = 0
+    var cou = setInterval(function(){
+        counts+=50
+        document.querySelector(".font1").innerHTML = counts
+        if(counts === parseInt(counters)){
+            clearInterval(cou)
+        }
+    },1)
+    var counters = document.querySelector(".font2").textContent
+    counts = 0
+    var cou = setInterval(function(){
+        counts+=1
+        document.querySelector(".font2").innerHTML = counts
+        if(counts === parseInt(counters)){
+            clearInterval(cou)
+        }
+    },1)
+    var counters = document.querySelector(".font3").textContent
+    counts = 0
+    var cou = setInterval(function(){
+        counts+=1
+        document.querySelector(".font3").innerHTML = counts
+        if(counts === parseInt(counters)){
+            clearInterval(cou)
+        }
+    },1)
+    var counters = document.querySelector(".font4").textContent
+    counts = 0
+    var cou = setInterval(function(){
+        counts+=1
+        document.querySelector(".font4").innerHTML = counts
+        if(counts === parseInt(counters)){
+            clearInterval(cou)
+        }
+    },1)
+    var counters = document.querySelector(".font5").textContent
+    counts = 0
+    var cou = setInterval(function(){
+        counts+=1
+        document.querySelector(".font4").innerHTML = counts
+        if(counts === parseInt(counters)){
+            clearInterval(cou)
+        }
+    },1)
+</script>
