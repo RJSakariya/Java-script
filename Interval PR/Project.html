@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img {
+            height: 900px;
+            width: 900px;
+            background-size: cover cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: blobbing 2s ease-in-out infinite;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            animation-play-state: running;
+            display: none;
+        }
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        @keyframes blobbing {
+            0% {
+                border-radius: 58% 53% 24% 75% / 61% 76% 24% 47%;
+            }
+
+            50% {
+                border-radius: 79% 21% 44% 56% / 37% 23% 77% 63%;
+            }
+
+            100% {
+                border-radius: 58% 53% 24% 75% / 61% 76% 24% 47%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img">
+        <h1>
+            1
+        </h1>
+    </div>
+    <h2>
+        5
+    </h2>
+</body>
+
+</html>
+<script>
+    var slider = ["https://www.imgacademy.com/sites/default/files/styles/scale_1700w/public/2022-08/campus-meta.jpg?itok=3T2yGZ4r", "https://images2.privateschoolreview.com/photo/7000/7200/IMG_Academy-8a1hvhmu19c08swgk4skw8sg4-1122.jpg","https://www.imgcorporations.com/images/bg-img.jpg"]
+    var i = 0,count=5;
+    function slide(i) {
+        document.querySelector(".img").style.background = "url("+slider[i]+")";
+        document.querySelector(".img").style.backgroundSize = "100% 100%";
+        document.querySelector("h1").innerHTML = i+1
+    }
+    setTimeout(()=>{
+    setInterval(() => {
+        if (i == slider.length) {
+            i = 0
+        }
+        slide(i)
+        i++;
+    }, 2000)},4000)
+    countdown=setInterval(()=>{
+        count--
+        if(count<0){
+            document.querySelector(".img").style.display = "block"
+            document.querySelector("h2").style.display = "none"
+            clearInterval(countdown)
+        }
+        document.querySelector("h2").innerHTML = count
+    },1000)
+</script>
