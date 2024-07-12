@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider {
+            width: 100%;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(5, 10fr);
+            gap: 20px;
+        }
+
+        .slides {
+            width: 300px;
+            height: 400px;
+        }
+
+        .slides img {
+            width: 100%;
+        }
+
+        .slides h1 {
+            line-height: 0px;
+        }
+
+        .slides h4 {
+            line-height: 0px;
+            color: #0000008a;
+        }
+
+        .slides p {
+            line-height: 0px;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+
+    </div>
+</body>
+
+</html>
+<script>
+    fetch("https://dummyapi.online/api/social-profiles").then((res) => {
+        return res.json()
+    }).then((data) => {
+        slides(data)
+    }).catch((e) => {
+        document.write("error : " + e)
+    })
+    function slides(data) {
+        data.map((d) => {
+            let slide = document.createElement("div");
+            slide.classList.add("slides");
+            var img = document.createElement('img');
+            img.src = d.profilePic;
+            var h1 = document.createElement('h1');
+            h1.innerText = d.username;
+            var h4 = document.createElement('h4');
+            h4.innerText = d.email;
+            var p = document.createElement('p');
+            p.innerText = d.bio;
+            slide.append(img, h1, h4, p);
+            document.querySelector(".slider").appendChild(slide);
+        })
+    }
+</script>
