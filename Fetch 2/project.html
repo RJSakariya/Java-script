@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 10fr);
+            gap: 20px;
+        }
+        .img:nth-child(1) img{
+            height: 100%;
+            width: 100%;
+        }
+        .img{
+            height: 500px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        .img img {
+            height: 300px;
+        }
+        .img h1{
+            margin: 0px;
+        }
+        .img p{
+            margin: 0px;
+            color: #222222;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+    fetch("https://dog.ceo/api/breeds/image/random").then((res) => {
+        return res.json()
+    }).then((data) => {
+        dog(data)
+    }).catch((e) => {
+        document.write("error : " + e)
+    })
+    function dog(d) {
+        let div = document.createElement("div")
+        div.classList.add("img")
+        let img = document.createElement("img")
+        img.src = d.message
+        div.append(img)
+        document.querySelector("body").append(div)
+    }
+    fetch("https://fakestoreapi.com/products").then((res) => {
+        return res.json()
+    }).then((data) => {
+        product(data)
+    }).catch((e) => {
+        document.write("error : " + e)
+    })
+    function product(data) {
+        data.map((d)=>{
+            let div = document.createElement("div")
+            div.classList.add("img")
+            let img = document.createElement("img")
+            img.src = d.image
+            let h1 = document.createElement("h4")
+            h1.innerText = d.title
+            let p = document.createElement("p")
+            p.innerText = d.price + " $"
+            div.append(img,h1,p)
+            document.querySelector("body").append(div)
+        })
+    }
+</script>
