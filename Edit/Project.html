@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <style>
+        #main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .product img {
+            max-width: 200px;
+            height: auto;
+        }
+        .price {
+            font-weight: bold;
+        }
+        .image{
+            width: 100px;
+            height: 50px;
+        }
+        #btn-upd{
+            height: 35px;
+            background-color: blue;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            position: fixed;
+            left: 200px;
+        }
+        #edit-input{
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 5px;
+            position: fixed;
+        }
+        .edit{
+            height: 30px;
+            background-color: blue;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="edit-input" placeholder="Enter new price">
+    <button id="btn-upd">Update Price</button>
+    <div id="main"></div>
+
+    <script>
+        var arr = JSON.parse(localStorage.getItem("keys"))||[]
+        arr == []?fetch('https://fakestoreapi.com/products')
+            .then((res) => res.json())
+            .then((json) => {
+                fakestoreapi(json);
+                localStorage.setItem("keys", JSON.stringify(json));
+            })
+            .catch((err) => {
+                console.log(err);
+            }) : fakestoreapi(arr);
+        
+        function fakestoreapi(json) {
+            json.forEach((el, index) => {
+                let div = document.createElement('div');
+                let heading = document.createElement('h3');
+                heading.innerHTML = el.title;
+
+                let img = document.createElement('img');
+                img.setAttribute("src", el.image);
+                img.classList="image"
+
+                let price = document.createElement('p');
+                price.innerHTML = "$" + el.price;
+                price.className = 'price';
+
+                let edit = document.createElement('button');
+                edit.innerText = "Edit Price";
+                edit.className = 'edit';
+
+                div.className = 'product';
+
+                div.append(heading, img, price, edit);
+                document.getElementById("main").append(div);
+
+                edit.addEventListener("click", function () {
+                    document.getElementById("edit-input").value = el.price;
+                    document.getElementById("edit-input").dataset.index = index;
+                });
+            });
+
+            document.getElementById("btn-upd").addEventListener("click", function () {
+                let newPrice = document.getElementById("edit-input").value;
+                let index = document.getElementById("edit-input").dataset.index;
+                if (index !== undefined) {
+                    json[index].price = newPrice;
+                    localStorage.setItem("keys", JSON.stringify(json));
+                    document.querySelectorAll('.price')[index].innerHTML = "$" + newPrice;
+                    document.getElementById("edit-input").value = "";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
