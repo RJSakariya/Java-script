@@ -15,6 +15,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
+    body {
+        background: url("https://media.istockphoto.com/id/962500712/video/4k-tl-cloudy-sky-with-sun-rays.jpg?s=640x640&k=20&c=XQrz-Y4FIzovVlayePLhPZpHoM8-iLN7gZ_uSdnoe-8=");
+        background-size: cover;
+    }
     .fixed-top {
         top: 20px;
     }
@@ -29,14 +33,61 @@
         cursor: pointer;
     }
 
-    .dropdown-menu {
-        width: 100%;
-        height: 200px;
-        overflow-y: scroll;
+    datalist {
+        position: absolute;
+        background-color: white;
+        border: 1px solid blue;
+        border-radius: 0 0 5px 5px;
+        border-top: none;
+        font-family: sans-serif;
+        width: 350px;
+        padding: 5px;
+        max-height: 10rem;
+        overflow-y: auto
+    }
+
+    option {
+        background-color: white;
+        padding: 4px;
+        color: blue;
+        margin-bottom: 1px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    option:hover,
+    .active {
+        background-color: lightblue;
     }
 
     .dropdown-menu::-webkit-scrollbar {
         width: 10px;
+    }
+
+    .main {
+        background: linear-gradient(black, black);
+        margin-top: 100px;
+    }
+
+    .condition {
+        color: white;
+    }
+
+    .city {
+        color: white;
+    }
+
+    img {
+        width: 100px;
+        text-align: center;
+    }
+
+    h1 {
+        color: aliceblue;
+    }
+
+    h6 {
+        color: white;
     }
 </style>
 
@@ -46,11 +97,12 @@
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" data-bs-toggle="dropdown">
-                        <ul class="dropdown-menu dropdown-menu-start">
-                            <li><a class="dropdown-item">Rajkot</a></li>
-                        </ul>
-                        <button class="btn btn-outline-secondary" type="button"><i
+                        <input type="text" class="form-control input" placeholder="" list="citynames" role="combobox"
+                            autocomplete="on">
+                        <datalist id="citynames" role="listbox">
+
+                        </datalist>
+                        <button class="btn btn-outline-secondary search" type="button" onclick="search()"><i
                                 class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                     <button class="btn btn-outline-secondary loc" type="button"><i
@@ -58,6 +110,15 @@
                 </div>
             </div>
         </div>
+        <div class=" row main p-5 rounded-4">
+            <div class="col-4 conditions">
+
+            </div>
+            <div class="col-8 data p-3">
+
+            </div>
+        </div>
+
     </div>
 </body>
 
@@ -68,13 +129,107 @@
         document.querySelector(".loc").style.display = "none"
         document.querySelector(".input-group").style.display = "flex"
     })
-    fetch("https://github.com/fayazara/Indian-Cities-API/blob/master/cities.json").then((res) => {
+    fetch("./cities.json").then((res) => {
         return res.json()
     })
         .then((data) => {
-            console.log(data);
+            fillCities(data)
         })
         .catch((err) => {
             console.log(err);
         })
+
+    function fillCities(data) {
+        var city = data.cities
+        city.forEach((el) => {
+            var opt = document.createElement("option");
+            opt.innerText = el.District;
+            opt.value = el.District + "," + el.City + "," + el.State
+
+            document.querySelector("#citynames").appendChild(opt);
+        })
+    }
+    function search() {
+        fetchData()
+        document.querySelector(".loc").style.display = "block"
+        document.querySelector(".input-group").style.display = "none"
+    }
+
+    function fetchData() {
+        document.querySelector(".conditions").innerHTML = ""
+        document.querySelector(".data").innerHTML = ""
+        var condition = document.createElement("p")
+        var icon = document.createElement("img")
+        var city = document.createElement("h4")
+        var c = document.createElement("h1")
+        var f = document.createElement("h6")
+        condition.classList.add("condition")
+        var input = document.querySelector(".input").value;
+        if (input != "") {
+            fetch(`http://api.weatherapi.com/v1/current.json?key=8d8763f487cb44b489e90914243007&q=${input}`)
+                .then((res) => {
+                    return res.json()
+                })
+                .then((data) => {
+                    background(data.current.condition.text);
+                    fillData(data)
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+        else {
+            fetch(`http://api.weatherapi.com/v1/current.json?key=8d8763f487cb44b489e90914243007&q=india`)
+                .then((res) => {
+                    return res.json()
+                })
+                .then((data) => {
+                    background(data.current.condition.text);
+                    fillData(data)
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+        function fillData(data) {
+            condition.innerHTML = data.current.condition.text
+            icon.src = data.current.condition.icon
+            document.querySelector(".conditions").append(condition, icon)
+            city.classList.add("city")
+            city.innerHTML = data.location.name + "," + data.location.region + "," + data.location.country
+            c.innerHTML = data.current.feelslike_c + "°"
+            f.innerHTML = data.current.feelslike_f + " F"
+            document.querySelector(".data").append(city, c, f)
+            console.log(data)
+        }
+    }
+    fetchData()
+    function background(data) {
+        switch (data) {
+            case "Partly Cloudy":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #4474ff, #c99810)"
+                break
+            case "Patchy rain nearby":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #447490, #c99810)"
+                break
+            case "Light rain shower":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #4474ff, #447490)"
+                break
+            case "Overcast":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #438d75, #6657C0)"
+                break
+            case "Thundery outbreaks in nearby":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #438d75, #6657C0)"
+                break
+            case "Rainy":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #438d75, #6657C0)"
+                break
+            case "Sunny":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #f1b824, #c4731b)"
+                break
+            case "Partly Cloudy":
+                document.querySelector(".main").style.background = "linear-gradient(45deg, #605f6d, #AABBCC)"
+                break
+        }
+    }
 </script>
