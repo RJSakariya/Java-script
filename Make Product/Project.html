@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <style>
-        .sticky{
+        .sticky {
             width: 100%;
             padding: 20px;
             position: sticky;
             top: 0px;
             left: 0px;
             z-index: 10;
-            background: linear-gradient(#ffffff55,#ffffff55);
+            background: linear-gradient(#ffffff55, #ffffff55);
             backdrop-filter: blur(20px);
         }
+
         .liked {
             border-radius: 20px;
             border: 1px solid;
@@ -34,9 +40,6 @@
 
         .like {
             width: 100%;
-            display: grid;
-            grid-template-columns: repeat(5, 10fr);
-            gap: 20px;
             overflow: hidden;
             display: none;
         }
@@ -46,13 +49,14 @@
             position: relative;
             height: fit-content;
         }
-        .lk h2 {
+
+        .lk h4 {
             text-align: left;
             margin: 0px;
             white-space: wrap;
         }
 
-        .lk h4 {
+        .lk h5 {
             margin: 0px;
             color: #0000008a;
             text-align: left;
@@ -70,17 +74,15 @@
 
         .slider {
             width: 100%;
-            display: grid;
-            grid-template-columns: repeat(20, 10fr);
-            gap: 20px;
             overflow: hidden;
             display: none;
         }
 
         .slides {
-            width: 19vw;
             position: relative;
             height: fit-content;
+            height: 100%;
+            border: 1px solid;
         }
 
         .div {
@@ -108,13 +110,13 @@
             max-width: 100%;
         }
 
-        .slides h2 {
+        .slides h4 {
             text-align: left;
             margin: 0px;
             white-space: wrap;
         }
 
-        .slides h4 {
+        .slides h5 {
             margin: 0px;
             color: #0000008a;
             text-align: left;
@@ -129,28 +131,37 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        p:hover{
+
+        p:hover {
             white-space: wrap;
             text-overflow: clip;
         }
+
         .active {
-            display: grid;
+            display: flex;
         }
     </style>
 </head>
 
 <body>
     <div class="sticky">
-        <button class="liked" onclick="display()">
-            <i class="fa-solid fa-heart"></i>
-            Liked
-        </button>
-    </div>
-    <div class="slider">
+        <div class="container">
+            <button class="liked" onclick="display()">
+                <i class="fa-solid fa-heart"></i>
+                Liked
+            </button>
+            <select name="Catagory" id="catagory">
 
+            </select>
+        </div>
     </div>
-    <div class="like">
+    <div class="container">
+        <div class="slider row">
 
+        </div>
+        <div class="like row">
+
+        </div>
     </div>
 </body>
 
@@ -164,12 +175,19 @@
     }).catch((e) => {
         document.write("error : " + e)
     })
-    var slds = []
+
     function slides(data) {
         data.map((d) => {
             var arr = JSON.parse(localStorage.getItem("Arr")) || []
+            let main = document.createElement("div");
+            main.classList.add("main_div");
+            main.classList.add("col-sm-6");
+            main.classList.add("col-md-3");
+            main.classList.add("p-2");
             let slide = document.createElement("div");
             slide.classList.add("slides");
+            slide.classList.add("p-2");
+            slide.classList.add("rounded-2");
             let div = document.createElement("div");
             div.classList.add("div");
             let heart = document.createElement("button");
@@ -188,17 +206,17 @@
             })
             var img = document.createElement('img');
             img.src = d.image;
-            var h2 = document.createElement('h2');
-            h2.innerText = d.title;
             var h4 = document.createElement('h4');
-            h4.innerText = "Price : " + d.price + " $";
+            h4.innerText = d.title;
+            var h5 = document.createElement('h5');
+            h5.innerText = "Price : " + d.price + " $";
             var p = document.createElement('p');
             p.innerText = d.description;
             heart.append(heart_icon)
             div.append(img)
-            slide.append(div, h2, h4, p, heart);
-            document.querySelector(".slider").appendChild(slide);
-            slds = [...slds, slide]
+            slide.append(div, h4, h5, p, heart);
+            main.append(slide);
+            document.querySelector(".slider").appendChild(main);
         })
     }
     function liked(data) {
@@ -206,8 +224,15 @@
             var arr = JSON.parse(localStorage.getItem("Arr")) || []
             arr.map((el) => {
                 if (el == d.id) {
+                    let main = document.createElement("div");
+                    main.classList.add("main_div");
+                    main.classList.add("col-sm-6");
+                    main.classList.add("col-md-3");
+                    main.classList.add("p-2");
                     let slide = document.createElement("div");
-                    slide.classList.add("lk");
+                    slide.classList.add("slides");
+                    slide.classList.add("p-2");
+                    slide.classList.add("rounded-2");
                     let div = document.createElement("div");
                     div.classList.add("div");
                     let heart = document.createElement("button");
@@ -222,16 +247,17 @@
                     })
                     var img = document.createElement('img');
                     img.src = d.image;
-                    var h2 = document.createElement('h2');
-                    h2.innerText = d.title;
                     var h4 = document.createElement('h4');
-                    h4.innerText = "Price : " + d.price + " $";
+                    h4.innerText = d.title;
+                    var h5 = document.createElement('h5');
+                    h5.innerText = "Price : " + d.price + " $";
                     var p = document.createElement('p');
                     p.innerText = d.description;
                     heart.append(heart_icon)
                     div.append(img)
-                    slide.append(div, h2, h4, p, heart);
-                    document.querySelector(".like").appendChild(slide);
+                    slide.append(div, h4, h5, p, heart);
+                    main.append(slide);
+                    document.querySelector(".like").appendChild(main);
                 }
             })
         })
@@ -253,21 +279,6 @@
         localStorage.setItem("Arr", JSON.stringify(arr))
         window.location.reload()
     }
-    var i = 0
-    var j = 5
-    setInterval(() => {
-        slds[i].style.display = "none"
-        slds[j].style.display = "block"
-        i++
-        j++
-        if (i > 19) {
-            i = 0
-        }
-        if (j > 19) {
-            j = 0
-        }
-    }, 3000)
-    
     var act = localStorage.getItem("Act")
     function display() {
         if (act == "like_window") {
@@ -281,12 +292,12 @@
             dis(act)
         }
     }
-    function dis(a){
-        if(a == ""){
+    function dis(a) {
+        if (a == "") {
             document.querySelector(".slider").classList.add("active")
             document.querySelector(".like").classList.remove("active")
             document.querySelector(".liked").innerHTML = `<i class="fa-solid fa-heart"></i> Liked`
-        }else{
+        } else {
             document.querySelector(".like").classList.add("active")
             document.querySelector(".slider").classList.remove("active")
             document.querySelector(".liked").innerHTML = `<i class="fa-solid fa-arrow-left"></i> Back`
