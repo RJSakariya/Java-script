@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .sticky{
+            width: 100%;
+            padding: 20px;
+            position: sticky;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            background: linear-gradient(#ffffff55,#ffffff55);
+            backdrop-filter: blur(20px);
+        }
+        .liked {
+            border-radius: 20px;
+            border: 1px solid;
+            padding: 10px 20px;
+            background-color: #ffffff55;
+            color: red;
+        }
+
+        .liked:hover {
+            color: #ffffff;
+            background-color: red;
+        }
+
+        .like {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 10fr);
+            gap: 20px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .lk {
+            width: 19vw;
+            position: relative;
+            height: fit-content;
+        }
+        .lk h2 {
+            text-align: left;
+            margin: 0px;
+            white-space: wrap;
+        }
+
+        .lk h4 {
+            margin: 0px;
+            color: #0000008a;
+            text-align: left;
+        }
+
+        .lk p {
+            margin: 0px;
+            height: 50px;
+            font-size: 15px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .slider {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(20, 10fr);
+            gap: 20px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .slides {
+            width: 19vw;
+            position: relative;
+            height: fit-content;
+        }
+
+        .div {
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heart {
+            border: none;
+            background-color: transparent;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            color: red;
+        }
+
+        .div img {
+            max-height: 300px;
+            max-width: 100%;
+        }
+
+        .slides h2 {
+            text-align: left;
+            margin: 0px;
+            white-space: wrap;
+        }
+
+        .slides h4 {
+            margin: 0px;
+            color: #0000008a;
+            text-align: left;
+        }
+
+        .slides p {
+            margin: 0px;
+            height: 50px;
+            font-size: 15px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        p:hover{
+            white-space: wrap;
+            text-overflow: clip;
+        }
+        .active {
+            display: grid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sticky">
+        <button class="liked" onclick="display()">
+            <i class="fa-solid fa-heart"></i>
+            Liked
+        </button>
+    </div>
+    <div class="slider">
+
+    </div>
+    <div class="like">
+
+    </div>
+</body>
+
+</html>
+<script>
+    fetch("https://fakestoreapi.com/products").then((res) => {
+        return res.json()
+    }).then((data) => {
+        slides(data)
+        liked(data)
+    }).catch((e) => {
+        document.write("error : " + e)
+    })
+    var slds = []
+    function slides(data) {
+        data.map((d) => {
+            var arr = JSON.parse(localStorage.getItem("Arr")) || []
+            let slide = document.createElement("div");
+            slide.classList.add("slides");
+            let div = document.createElement("div");
+            div.classList.add("div");
+            let heart = document.createElement("button");
+            heart.classList.add("heart");
+            let heart_icon = document.createElement("i");
+            heart_icon.classList.add("fa-regular");
+            heart_icon.classList.add("fa-heart");
+            heart_icon.classList.add(`i${d.id}`)
+            arr.map((el) => {
+                if (el == d.id) {
+                    heart_icon.classList.add("fa-solid");
+                }
+            })
+            heart.addEventListener("click", () => {
+                cl(d.id)
+            })
+            var img = document.createElement('img');
+            img.src = d.image;
+            var h2 = document.createElement('h2');
+            h2.innerText = d.title;
+            var h4 = document.createElement('h4');
+            h4.innerText = "Price : " + d.price + " $";
+            var p = document.createElement('p');
+            p.innerText = d.description;
+            heart.append(heart_icon)
+            div.append(img)
+            slide.append(div, h2, h4, p, heart);
+            document.querySelector(".slider").appendChild(slide);
+            slds = [...slds, slide]
+        })
+    }
+    function liked(data) {
+        data.map((d) => {
+            var arr = JSON.parse(localStorage.getItem("Arr")) || []
+            arr.map((el) => {
+                if (el == d.id) {
+                    let slide = document.createElement("div");
+                    slide.classList.add("lk");
+                    let div = document.createElement("div");
+                    div.classList.add("div");
+                    let heart = document.createElement("button");
+                    heart.classList.add("heart");
+                    let heart_icon = document.createElement("i");
+                    heart_icon.classList.add("fa-regular");
+                    heart_icon.classList.add("fa-heart");
+                    heart_icon.classList.add(`i${d.id}`)
+                    heart_icon.classList.add("fa-solid");
+                    heart.addEventListener("click", () => {
+                        cl(d.id)
+                    })
+                    var img = document.createElement('img');
+                    img.src = d.image;
+                    var h2 = document.createElement('h2');
+                    h2.innerText = d.title;
+                    var h4 = document.createElement('h4');
+                    h4.innerText = "Price : " + d.price + " $";
+                    var p = document.createElement('p');
+                    p.innerText = d.description;
+                    heart.append(heart_icon)
+                    div.append(img)
+                    slide.append(div, h2, h4, p, heart);
+                    document.querySelector(".like").appendChild(slide);
+                }
+            })
+        })
+    }
+    function cl(ind) {
+        var arr = JSON.parse(localStorage.getItem("Arr")) || []
+        document.querySelector(`.i${ind}`).classList.toggle("fa-solid")
+        var res = 0
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] == ind) {
+                arr.splice(i, 1)
+                res = 1
+                break
+            }
+        }
+        if (res == 0) {
+            arr.push(ind)
+        }
+        localStorage.setItem("Arr", JSON.stringify(arr))
+        window.location.reload()
+    }
+    var i = 0
+    var j = 5
+    setInterval(() => {
+        slds[i].style.display = "none"
+        slds[j].style.display = "block"
+        i++
+        j++
+        if (i > 19) {
+            i = 0
+        }
+        if (j > 19) {
+            j = 0
+        }
+    }, 3000)
+    
+    var act = localStorage.getItem("Act")
+    function display() {
+        if (act == "like_window") {
+            localStorage.setItem("Act", "")
+            act = localStorage.getItem("Act")
+            dis(act)
+        }
+        else {
+            localStorage.setItem("Act", "like_window")
+            act = localStorage.getItem("Act")
+            dis(act)
+        }
+    }
+    function dis(a){
+        if(a == ""){
+            document.querySelector(".slider").classList.add("active")
+            document.querySelector(".like").classList.remove("active")
+            document.querySelector(".liked").innerHTML = `<i class="fa-solid fa-heart"></i> Liked`
+        }else{
+            document.querySelector(".like").classList.add("active")
+            document.querySelector(".slider").classList.remove("active")
+            document.querySelector(".liked").innerHTML = `<i class="fa-solid fa-arrow-left"></i> Back`
+        }
+    }
+    dis(act)
+
+</script>
