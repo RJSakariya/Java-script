@@ -25,11 +25,11 @@
     .header {
         height: 80px;
         display: flex;
-        align-items: center;
+        align-Tasks: center;
         justify-content: space-between;
     }
 
-    .h_items {
+    .h_Tasks {
         display: flex;
     }
 
@@ -151,7 +151,7 @@
         align-self: center;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-Tasks: center;
         overflow: hidden;
     }
 
@@ -196,7 +196,7 @@
         <div class="container">
             <div class="header">
                 <h4>task</h4>
-                <div class="h_items">
+                <div class="h_Tasks">
                     <div class="h_item1 input-group">
                         <input type="text" class="form-control search_input" placeholder="Search task" list="itms">
                         <datalist id="itms" role="listbox">
@@ -275,7 +275,7 @@
     var add_task = document.querySelector(".add_task")
     var edit_task = document.querySelector(".edit_task")
     var cls = document.querySelector(".close")
-    var Items = JSON.parse(localStorage.getItem("Items")) || [{ "name": "Running", "url": "https://t3.ftcdn.net/jpg/02/89/30/62/360_F_289306269_rJ04x9o9Dbv8zHcImf9kRZA08bVCimIP.jpg", "check": "ch", "date": "10/05/2024" }]
+    var Tasks = JSON.parse(localStorage.getItem("Task")) || [{ "name": "Running", "url": "https://t3.ftcdn.net/jpg/02/89/30/62/360_F_289306269_rJ04x9o9Dbv8zHcImf9kRZA08bVCimIP.jpg", "check": "ch", "date": "10/05/2024" }]
     var main = document.querySelector(".main")
     var img = document.querySelector(".img")
     var nm = document.getElementById("nm")
@@ -284,7 +284,7 @@
     var check = document.getElementById("check")
     var id = -1
     comp.value = done
-    Items.map((el, index) => {
+    Tasks.map((el, index) => {
         var edit = document.createElement("btn")
         edit.classList.add("edit")
         edit.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`
@@ -326,8 +326,8 @@
             id = index
         })
         del.addEventListener("click", () => {
-            Items.splice(index, 1)
-            localStorage.setItem("Items", JSON.stringify(Items))
+            Tasks.splice(index, 1)
+            localStorage.setItem("Tasks", JSON.stringify(Tasks))
             alert(el.name + " is Deleted...")
             window.location.reload()
         })
@@ -401,19 +401,19 @@
     add_task.addEventListener("click", () => {
 
         var ch = (check.checked == false ? "unch" : check.value)
-        Items.push({
+        Tasks.push({
             "name": nm.value,
             "url": url.value,
             "date": date.value,
             "check": ch
         })
-        localStorage.setItem("Items", JSON.stringify(Items))
+        localStorage.setItem("Tasks", JSON.stringify(Tasks))
         window.location.reload()
     })
     var m_display = document.querySelectorAll(".m_display")
     search.addEventListener("click", () => {
         let searched = search_input.value.toLowerCase()
-        Items.map((el, index) => {
+        Tasks.map((el, index) => {
             let name = el.name.toLowerCase()
             if (searched == name) {
                 m_display[index].style.display = "block"
@@ -425,7 +425,7 @@
     })
     search_input.addEventListener("keyup", () => {
         let searched = search_input.value.toLowerCase()
-        Items.map((el, index) => {
+        Tasks.map((el, index) => {
             let name = el.name.toLowerCase().slice(0, searched.length)
             if (searched == name) {
                 m_display[index].style.display = "block"
@@ -437,14 +437,14 @@
     })
     edit_task.addEventListener("click", () => {
         var ch = (check.checked == false ? "unch" : check.value)
-        Items.splice(id, 1)
-        Items.push({
+        Tasks.splice(id, 1)
+        Tasks.push({
             "name": nm.value,
             "url": url.value,
             "date": date.value,
             "check": ch
         })
-        localStorage.setItem("Items", JSON.stringify(Items))
+        localStorage.setItem("Tasks", JSON.stringify(Tasks))
         window.location.reload()
     })
     comp.addEventListener("change", () => {
@@ -454,12 +454,12 @@
     })
     switch (done) {
         case "All":
-            Items.map((el, index) => {
+            Tasks.map((el, index) => {
                 m_display[index].style.display = "block"
             })
             break;
         case "Completed":
-            Items.map((el, index) => {
+            Tasks.map((el, index) => {
                 if (el.check == "ch") {
                     m_display[index].style.display = "block"
                     console.log(index)
@@ -470,7 +470,7 @@
             })
             break;
         case "Uncompleted":
-            Items.map((el, index) => {
+            Tasks.map((el, index) => {
                 if (el.check == "unch") {
                     m_display[index].style.display = "block"
                 }

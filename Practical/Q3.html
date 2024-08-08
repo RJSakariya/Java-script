@@ -25,11 +25,11 @@
     .header {
         height: 80px;
         display: flex;
-        align-items: center;
+        align-Products: center;
         justify-content: space-between;
     }
 
-    .h_items {
+    .h_Products {
         display: flex;
     }
 
@@ -141,7 +141,7 @@
         align-self: center;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-Products: center;
         overflow: hidden;
     }
 
@@ -187,7 +187,7 @@
         <div class="container">
             <div class="header">
                 <h4>Product</h4>
-                <div class="h_items">
+                <div class="h_Products">
                     <div class="h_item1 input-group">
                         <input type="text" class="form-control search_input" placeholder="Search Product" list="itms">
                         <datalist id="itms" role="listbox">
@@ -252,7 +252,7 @@
     var add_Product = document.querySelector(".add_Product")
     var edit_Product = document.querySelector(".edit_Product")
     var cls = document.querySelector(".close")
-    var Items = JSON.parse(localStorage.getItem("Items")) || [{ "name": "Fjallraven - Foldsack No. 1 Backpack", "url": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", "price": "109.95", "desc": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday" }]
+    var Products = JSON.parse(localStorage.getItem("Products")) || [{ "name": "Fjallraven - Foldsack No. 1 Backpack", "url": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", "price": "109.95", "desc": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday" }]
     var main = document.querySelector(".main")
     var img = document.querySelector(".img")
     var nm = document.getElementById("nm")
@@ -260,7 +260,7 @@
     var desc = document.getElementById("desc")
     var price = document.getElementById("price")
     var id = -1
-    Items.map((el, index) => {
+    Products.map((el, index) => {
         var edit = document.createElement("btn")
         edit.classList.add("edit")
         edit.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`
@@ -302,8 +302,8 @@
             id = index
         })
         del.addEventListener("click", () => {
-            Items.splice(index, 1)
-            localStorage.setItem("Items", JSON.stringify(Items))
+            Products.splice(index, 1)
+            localStorage.setItem("Products", JSON.stringify(Products))
             alert(el.name + " is Deleted...")
             window.location.reload()
         })
@@ -375,19 +375,19 @@
         img.src = url.value
     })
     add_Product.addEventListener("click", () => {
-        Items.push({
+        Products.push({
             "name": nm.value,
             "url": url.value,
             "desc": desc.value,
             "price": price.value
         })
-        localStorage.setItem("Items", JSON.stringify(Items))
+        localStorage.setItem("Products", JSON.stringify(Products))
         window.location.reload()
     })
     var m_display = document.querySelectorAll(".m_display")
     search.addEventListener("click", () => {
         let searched = search_input.value.toLowerCase()
-        Items.map((el,index)=>{
+        Products.map((el,index)=>{
             let name = el.name.toLowerCase()
             if (searched== name) {
                 m_display[index].style.display = "block"
@@ -399,7 +399,7 @@
     })
     search_input.addEventListener("keyup", () => {
         let searched = search_input.value.toLowerCase()
-        Items.map((el,index)=>{
+        Products.map((el,index)=>{
             let name = el.name.toLowerCase().slice(0,searched.length)
             if (searched == name) {
                 m_display[index].style.display = "block"
@@ -410,14 +410,14 @@
         })
     })
     edit_Product.addEventListener("click", () => {
-        Items.splice(id, 1)
-        Items.push({
+        Products.splice(id, 1)
+        Products.push({
             "name": nm.value,
             "url": url.value,
             "desc": desc.value,
             "price": price.value
         })
-        localStorage.setItem("Items", JSON.stringify(Items))
+        localStorage.setItem("Products", JSON.stringify(Products))
         window.location.reload()
     })
 </script>
