@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="value1">before</h1>
+    <h1 id="value2">after</h1>
+    <button onclick="pushmethod()">push</button>
+    <button onclick="popmethod()">pop</button>
+    <button onclick="slicemethod()">slice</button>
+    <button onclick="splicemethod()">splice</button>
+    <button onclick="shiftmethod()">shift</button>
+    <button onclick="unshiftmethod()">unshift</button>
+    <button onclick="mapmethod()">map</button>
+    <button onclick="filtermethod()">filter</button>
+    <button onclick="reducemethod()">reduce</button>
+    <button onclick="sortmethod()">sort</button>
+    <button onclick="reversemethod()">reverse</button>
+
+
+</body>
+
+</html>
+<script>
+    function pushmethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6, 7]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.push(8)
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function popmethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.pop()
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function slicemethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = arr1.slice(2)
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function splicemethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.splice(3, 1, 14)
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function shiftmethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.shift()
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function unshiftmethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.unshift(0)
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function mapmethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = arr1.map(el => el * 2)
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function filtermethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = arr1.filter(el => el % 2 == 0)
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+
+    function reducemethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let sum = arr1.reduce((accumulator, item) => {
+            return accumulator + item;
+        }, 0)
+        console.log("after", sum);
+        document.getElementById("value2").innerHTML = "after " + sum
+    }
+    function sortmethod() {
+        let arr1 = [4, 3, 5, 2, 6, 1]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.sort()
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+    function reversemethod() {
+        let arr1 = [1, 2, 3, 4, 5, 6]
+        console.log("before", arr1);
+        document.getElementById("value1").innerHTML = "before " + arr1
+
+        let arr2 = [...arr1]
+        arr2.reverse()
+        console.log("after", arr2);
+        document.getElementById("value2").innerHTML = "after " + arr2
+    }
+</script>
